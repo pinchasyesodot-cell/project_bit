@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 import { SagaStatus, type Saga } from "../interfaces/sagaType.js";
 
-const sagaSchema = new Schema(
+const sagaSchema = new Schema<Saga>(
     {
         sagaId: { type: String, required: true, unique: true },
         senderId: { type: String, required: true },
@@ -10,7 +10,7 @@ const sagaSchema = new Schema(
         status: {
             type: String,
             enum: SagaStatus,
-            default: "PENDING",
+            default: SagaStatus.PENDING,
         },
     },
     { timestamps: true }
